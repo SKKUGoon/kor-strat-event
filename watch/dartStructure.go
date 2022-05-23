@@ -1,6 +1,9 @@
 package watch
 
-import "encoding/xml"
+import (
+	"encoding/xml"
+	"time"
+)
 
 type Feed struct {
 	ChannelInit xml.Name     `xml:"rss"`
@@ -23,4 +26,16 @@ type Content struct {
 	Category string `xml:"category"`
 	PubDate  string `xml:"pubDate"`
 	Creator  string `xml:"dc:creator"`
+}
+
+type BonusIssue struct {
+	Company    string
+	NewStock   float32
+	ReportDate time.Time
+	LockDate   time.Time
+}
+
+type RightsIssue struct {
+	Company  string
+	NewStock float32
 }
