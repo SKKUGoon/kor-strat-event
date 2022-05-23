@@ -2,10 +2,6 @@
 
 # KOWOL - Korean Stock Market Event Driven Strategy Watchmen
 
-<p>
-
-    KOWOL watches over open-source information
-
-</p>
+KOWOL provides near-real-time event driven strategy for korean stocks in KOSPI and KOSDAQ
 
 ##
