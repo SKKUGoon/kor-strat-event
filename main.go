@@ -1,7 +1,17 @@
 package main
 
-import "goKorMktEvent/dart"
+import (
+	"goKorMktEvent/dart"
+	"log"
+	"time"
+)
 
 func main() {
-	dart.Dart()
+	for {
+		p, _ := dart.Dart()
+		time.Sleep(10 * time.Second)
+
+		log.Println(p)
+	}
+
 }
