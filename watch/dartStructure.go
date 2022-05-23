@@ -1,4 +1,4 @@
-package dart
+package watch
 
 import "encoding/xml"
 
@@ -24,13 +24,3 @@ type Content struct {
 	PubDate  string `xml:"pubDate"`
 	Creator  string `xml:"dc:creator"`
 }
-
-const (
-	sKOSPI  = "유가"
-	sKOSDAQ = "코스닥"
-
-	sMusang    = "주요사항보고서(무상증자결정)"
-	sYusang    = "주요사항보고서(유상증자결정)"
-	sYuMusang  = "주요사항보고서(유무상증자결정)"
-	sRedundant = "기재정정"
-)
