@@ -28,8 +28,11 @@ type Content struct {
 	Creator  string `xml:"dc:creator"`
 }
 
+type ReportMap map[string]string
+
 type BonusIssue struct {
 	Company    string
+	StkPrice   int64
 	NewStock   float32
 	ReportDate time.Time
 	LockDate   time.Time
