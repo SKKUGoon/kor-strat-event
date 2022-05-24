@@ -30,7 +30,7 @@ The table is loaded onto an separate `iframe` which serves the static html file 
 The url for raw material can be recreated by obtaining dcmNo value and rcpNo value from the container.
 
 
-```
+```go
 const (
     // dcmNo parsing info
     dcmId     = "'dcmNo'"
