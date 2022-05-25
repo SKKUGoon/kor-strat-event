@@ -2,7 +2,6 @@ package watch
 
 import (
 	"encoding/xml"
-	"time"
 )
 
 type Feed struct {
@@ -26,19 +25,4 @@ type Content struct {
 	Category string `xml:"category"`
 	PubDate  string `xml:"pubDate"`
 	Creator  string `xml:"dc:creator"`
-}
-
-type ReportMap map[string]string
-
-type BonusIssue struct {
-	Company    string
-	StkPrice   int64
-	NewStock   float32
-	ReportDate time.Time
-	LockDate   time.Time
-}
-
-type RightsIssue struct {
-	Company  string
-	NewStock float32
 }
