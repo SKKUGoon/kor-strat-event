@@ -17,6 +17,7 @@ const (
 	sMusang    = "주요사항보고서(무상증자결정)"
 	sYusang    = "주요사항보고서(유상증자결정)"
 	sYuMusang  = "주요사항보고서(유무상증자결정)"
+	sConvert   = "주요사항보고서(전환사채권발행결정)"
 	sRedundant = "기재정정"
 )
 
@@ -76,7 +77,8 @@ func necessaryFeed(c *watch.Content) (string, bool) {
 	isMusang := strings.Contains(c.Title, sMusang)
 	isYusang := strings.Contains(c.Title, sYusang)
 	isYuMusang := strings.Contains(c.Title, sYuMusang)
-	if isMusang || isYusang || isYuMusang {
+	isConvert := strings.Contains(c.Title, sConvert)
+	if isMusang || isYusang || isYuMusang || isConvert {
 		return c.Title, true
 	} else {
 		return "", false
