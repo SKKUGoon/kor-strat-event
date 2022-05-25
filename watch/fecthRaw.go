@@ -91,7 +91,7 @@ func (dartReport *NewReportWatch) InnerReportURL() (string, error) {
 	return resp.URL.String(), nil
 }
 
-func (dartReport *NewReportWatch) Run() {
+func (dartReport *NewReportWatch) Run() interface{} {
 	// 1. get outer html
 	err := dartReport.OuterReportText()
 	if err != nil {
@@ -122,5 +122,5 @@ func (dartReport *NewReportWatch) Run() {
 	if err != nil {
 		log.Println("error", err)
 	}
-	log.Println("done", cnt)
+	return cnt
 }

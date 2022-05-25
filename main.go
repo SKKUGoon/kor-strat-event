@@ -16,7 +16,12 @@ func main() {
 
 		for _, r := range reports {
 			log.Println(r.Ctx.Title)
-			r.Run()
+			result := r.Run()
+
+			switch {
+			case r.T == 1:
+
+			}
 		}
 
 		// RSS Feed restriction( 100reqs / min )

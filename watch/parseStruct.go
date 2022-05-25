@@ -26,15 +26,6 @@ type ConvertibleIssue struct {
 	ConvertPrc string
 }
 
-type RawMaterial interface {
-	OuterReportText(string, error)
-	InnerReportText(string)
-
-	GetDcmNo(string, string)
-	GetRcpNo(string, string)
-	InnerReportURL(string, error)
-}
-
 type NewReportWatch struct {
 	Ctx     Content
 	RawUrl  string // url to raw report
