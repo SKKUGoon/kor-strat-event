@@ -2,17 +2,7 @@ package watch
 
 import "fmt"
 
-type EventReport interface {
-	PrettyPrint(watch NewReportWatch)
-}
-
-var (
-	BonusReport EventReport = BonusIssue{}
-	RightReport EventReport = RightsIssue{}
-	CBondReport EventReport = ConvertibleIssue{}
-)
-
-func (b BonusIssue) PrettyPrint(nw NewReportWatch) {
+func PrettyPrintB(b BonusIssue, nw NewReportWatch) {
 	fmt.Println("==================================")
 	fmt.Println("<   Event Driven %%% 무상증자 공시   >")
 	fmt.Printf("* 시간: %s\n", b.ReportDate.Format("2006-01-02 15:04:05"))
@@ -24,7 +14,7 @@ func (b BonusIssue) PrettyPrint(nw NewReportWatch) {
 	fmt.Println("==================================")
 }
 
-func (r RightsIssue) PrettyPrint(nw NewReportWatch) {
+func PrettyPrintR(r RightsIssue, nw NewReportWatch) {
 	fmt.Println("==================================")
 	fmt.Println("<   Event Driven %%% 유상증자 공시   >")
 	fmt.Printf("* 시간: %s\n", r.ReportDate.Format("2006-01-02 15:04:05"))
@@ -36,7 +26,7 @@ func (r RightsIssue) PrettyPrint(nw NewReportWatch) {
 	fmt.Println("==================================")
 }
 
-func (c ConvertibleIssue) PrettyPrint(nw NewReportWatch) {
+func PrettyPrintC(c ConvertibleIssue, nw NewReportWatch) {
 	fmt.Println("==================================")
 	fmt.Println("<   Event Driven %%% 전환사채 공시   >")
 	fmt.Printf("* 시간: %s\n", c.ReportDate.Format("2006-01-02 15:04:05"))

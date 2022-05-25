@@ -34,12 +34,15 @@ func (dartReport *NewReportWatch) parseEventDriven() (interface{}, error) {
 			switch {
 			case dartReport.T == 1:
 				infoBonus.ReportDate = time.Now()
+				PrettyPrintB(infoBonus, *dartReport)
 				return infoBonus, nil
 			case dartReport.T == 2:
 				infoRight.ReportDate = time.Now()
+				PrettyPrintR(infoRight, *dartReport)
 				return infoRight, nil
 			case dartReport.T == 4:
 				infoCB.ReportDate = time.Now()
+				PrettyPrintC(infoCB, *dartReport)
 				return infoCB, nil
 			default:
 				return nil, errors.New("dart report type not supported")
