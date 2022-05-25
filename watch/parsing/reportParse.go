@@ -25,7 +25,9 @@ const (
 )
 
 const (
-	bonusIssueInfo = "1주당 신주배정 주식수"
+	bonusIssueStockAdd = "1주당신주배정주식수"
+	bonusIssueStockPrc = "1주당액면가액"
+	bonusIssueLock     = "신주배정기준일"
 )
 
 func GetReportText(u string) (string, error) {
@@ -121,7 +123,11 @@ func ReportContent(text string) watch.BonusIssue {
 			switch {
 			case tn.Data == "td":
 				tt, tn = tkn.Next(), tkn.Token()
-				_ = bonusIssueFill(tn)
+				ok := bonusIssueFill(tn)
+				if ok {
+					tt, tn = tkn.Next(), tkn.Token()
+					fmt.Println(tn.Data)
+				}
 			default:
 				continue
 			}
@@ -129,8 +135,21 @@ func ReportContent(text string) watch.BonusIssue {
 	}
 }
 
-func bonusIssueFill(t html.Token) string {
-	data := strings.ReplaceAll(t.Data, "&nbsp", "")
-	fmt.Println(data)
-	return ""
+func bonusIssueFill(t html.Token) bool {
+	data := strings.ReplaceAll(t.Data, "\u00a0", "") // "\u00a0" is %nbsp
+	data = strings.ReplaceAll(data, " ", "")
+
+	switch {
+	case strings.Contains(data, bonusIssueStockAdd):
+		fmt.Println("case1", data)
+		return true
+	case strings.Contains(data, bonusIssueStockPrc):
+		fmt.Println("case2", data)
+		return true
+	case strings.Contains(data, bonusIssueLock):
+		fmt.Println("case3", data)
+		return true
+	default:
+		return false
+	}
 }
