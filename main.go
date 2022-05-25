@@ -3,6 +3,7 @@ package main
 import (
 	"goKorMktEvent/watch"
 	"log"
+	"time"
 )
 
 func main() {
@@ -11,13 +12,14 @@ func main() {
 		if len(reports) == 0 {
 			//time.Sleep(10 * time.Second)
 			log.Println("no info")
-			break
 		}
 
 		for _, r := range reports {
 			log.Println(r.Ctx.Title)
 			r.Run()
 		}
-		break
+
+		// RSS Feed restriction( 100reqs / min )
+		time.Sleep(5 * time.Second)
 	}
 }
