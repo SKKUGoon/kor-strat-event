@@ -169,6 +169,9 @@ func cbondIssueFillin(d string, caseNum int, c *ConvertibleIssue) ConvertibleIss
 	case caseNum == 1:
 		c.ConvertPrc = d
 		return *c
+	case caseNum == 2:
+		c.Ratio = d
+		return *c
 	default:
 		return *c
 	}
@@ -181,6 +184,12 @@ func cbondIssueSort(t html.Token) (bool, int, int) {
 	switch {
 	case strings.Contains(data, cBondConvertPrc):
 		return true, cBondConvertPrcP, 1
+	case strings.Contains(data, cBondConvertRatio):
+		if !strings.Contains(data, "(D=(A+B)/C)") {
+			return true, cBondConvertRatioP, 2
+		} else {
+			return false, -1, 0
+		}
 	default:
 		return false, -1, 0
 	}

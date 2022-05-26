@@ -1,11 +1,31 @@
 package main
 
 import (
+	"fmt"
 	"goKorMktEvent/watch"
 	"log"
 	"os"
 	"time"
 )
+
+const initialArt = `
+creator : Sang Il. Bae
+github  : https://github.com/SKKUGoon/goKorMktEvent
+
+ /$$   /$$  /$$$$$$  /$$      /$$ /$$      
+| $$  /$$/ /$$__  $$| $$  /$ | $$| $$      
+| $$ /$$/ | $$  \ $$| $$ /$$$| $$| $$      
+| $$$$$/  | $$  | $$| $$/$$ $$ $$| $$      
+| $$  $$  | $$  | $$| $$$$_  $$$$| $$      
+| $$\  $$ | $$  | $$| $$$/ \  $$$| $$      
+| $$ \  $$|  $$$$$$/| $$/   \  $$| $$$$$$$$
+|__/  \__/ \______/ |__/     \__/|________/
+
+`
+
+func init() {
+	fmt.Print(initialArt)
+}
 
 func main() {
 	var test = false

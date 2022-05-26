@@ -38,7 +38,8 @@ const (
 	rightIssueStockPrc = "신주발행가액"
 
 	// convertible bond issue (전환사채발행). typeNum 4
-	cBondConvertPrc = "전환가액(원"
+	cBondConvertPrc   = "전환가액(원"
+	cBondConvertRatio = "주식총수대비"
 
 	// how many time we should pass after we get a desired information
 	bonusIssueStockAddP = 1
@@ -49,7 +50,8 @@ const (
 	rightIssueAftVolP = 1
 	rightIssueLockP   = 1
 
-	cBondConvertPrcP = 0
+	cBondConvertPrcP   = 0
+	cBondConvertRatioP = 0
 )
 
 var (

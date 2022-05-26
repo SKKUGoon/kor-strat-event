@@ -92,6 +92,16 @@ func (dartReport *NewReportWatch) InnerReportURL() error {
 }
 
 func (dartReport *NewReportWatch) Run() interface{} {
+	/*
+		Whole process (from getting original report to printing out result)
+		1. Get outer HTML file
+		2. extract inner HTML URL
+			- using dcmNo and rcpNo obtained from outer HTML file
+		3. insert inner html content into pre-parse structure
+		4. parse inner html content - pretty print here.
+		5. return interface - Not used for now
+	*/
+
 	// 1. get outer html
 	err := dartReport.OuterReportText()
 	if err != nil {

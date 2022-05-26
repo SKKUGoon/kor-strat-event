@@ -24,6 +24,7 @@ type ConvertibleIssue struct {
 	Company    string
 	ReportDate time.Time
 	ConvertPrc string
+	Ratio      string
 }
 
 type NewReportWatch struct {
