@@ -57,7 +57,7 @@ func (dartReport *NewReportWatch) GetRcpNo() (string, string) {
 	return "rcpNo", rcpNo
 }
 
-func (dartReport *NewReportWatch) InnerReportURL() (string, error) {
+func (dartReport *NewReportWatch) InnerReportURL() error {
 	dcmKey, dcmVal := dartReport.GetDcmNo()
 	rcpKey, rcpVal := dartReport.GetRcpNo()
 
@@ -75,7 +75,7 @@ func (dartReport *NewReportWatch) InnerReportURL() (string, error) {
 	resp, err := http.NewRequest("GET", InnerReportURLBase, nil)
 	if err != nil {
 		log.Println(err)
-		return "", err
+		return err
 	}
 
 	// add parameter
@@ -88,7 +88,7 @@ func (dartReport *NewReportWatch) InnerReportURL() (string, error) {
 	resp.URL.RawQuery = qry.Encode()
 
 	dartReport.RawUrl = resp.URL.String()
-	return resp.URL.String(), nil
+	return nil
 }
 
 func (dartReport *NewReportWatch) Run() interface{} {
@@ -99,11 +99,10 @@ func (dartReport *NewReportWatch) Run() interface{} {
 	}
 
 	// 2. extract inner html url
-	u, err := dartReport.InnerReportURL()
+	err = dartReport.InnerReportURL()
 	if err != nil {
 		log.Println(err)
 	}
-	fmt.Println("URL:", u)
 
 	// 3. insert inner html content
 	resp, err := http.Get(dartReport.RawUrl)
@@ -111,9 +110,8 @@ func (dartReport *NewReportWatch) Run() interface{} {
 		log.Println(err)
 	}
 	defer resp.Body.Close()
-
 	data, _ := ioutil.ReadAll(resp.Body)
-	dartReport.RAWHTML = string(data)
+	dartReport.Rawhtml = string(data)
 
 	// 4. parse inner html content
 	cnt, err := dartReport.parseEventDriven()

@@ -32,7 +32,8 @@ const (
 	bonusIssueLock     = "신주배정기준일"
 
 	// right issue (유상증자). typeNum 2
-	rightIssueBefVol   = "발행주식총수(주)"
+	rightIssueBefVol   = "발행주식총수"
+	rightIssueBefVol0  = "증자전"
 	rightIssueAftVol   = "신주의종류와수"
 	rightIssueStockPrc = "신주발행가액"
 
@@ -46,7 +47,35 @@ const (
 
 	rightIssueBefVolP = 1
 	rightIssueAftVolP = 1
-	rightIssueLockP   = 0
+	rightIssueLockP   = 1
 
 	cBondConvertPrcP = 0
+)
+
+var (
+	TestStruct0 = NewReportWatch{
+		Ctx: Content{
+			Title:    "무상증자 테스트용",
+			Link:     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20220525000375",
+			Category: "TEST",
+		},
+		T: 1,
+	}
+	TestStruct1 = NewReportWatch{
+		Ctx: Content{
+			Title:    "유상증자 테스트용",
+			Link:     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20220525000311",
+			Category: "TEST",
+		},
+		T: 2,
+	}
+
+	TestStruct2 = NewReportWatch{
+		Ctx: Content{
+			Title:    "전환사채 테스트용",
+			Link:     "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20220525000128",
+			Category: "TEST",
+		},
+		T: 4,
+	}
 )

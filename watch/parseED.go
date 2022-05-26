@@ -23,7 +23,7 @@ func (dartReport *NewReportWatch) parseEventDriven() (interface{}, error) {
 		wt, c = -1, 0
 	)
 
-	tkn := html.NewTokenizer(strings.NewReader(dartReport.RAWHTML))
+	tkn := html.NewTokenizer(strings.NewReader(dartReport.Rawhtml))
 
 	for {
 		tt := tkn.Next()
@@ -153,7 +153,7 @@ func rightIssueSort(t html.Token) (bool, int, int) {
 	data = strings.ReplaceAll(data, " ", "")
 
 	switch {
-	case strings.Contains(data, rightIssueBefVol):
+	case strings.Contains(data, rightIssueBefVol0):
 		return true, rightIssueBefVolP, 1
 	case strings.Contains(data, rightIssueStockPrc):
 		return true, rightIssueAftVolP, 2

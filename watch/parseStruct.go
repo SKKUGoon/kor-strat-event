@@ -31,5 +31,5 @@ type NewReportWatch struct {
 	RawUrl  string // url to raw report
 	T       int    // report type
 	OrgHTML string // original HTML in string
-	RAWHTML string // inner HTML in string
+	Rawhtml string // inner HTML in string
 }
