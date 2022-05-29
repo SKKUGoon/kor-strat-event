@@ -8,23 +8,9 @@ import (
 	"time"
 )
 
-const initialArt = `
-creator : Sang Il. Bae
-github  : https://github.com/SKKUGoon/goKorMktEvent
-
- /$$   /$$  /$$$$$$  /$$      /$$ /$$      
-| $$  /$$/ /$$__  $$| $$  /$ | $$| $$      
-| $$ /$$/ | $$  \ $$| $$ /$$$| $$| $$      
-| $$$$$/  | $$  | $$| $$/$$ $$ $$| $$      
-| $$  $$  | $$  | $$| $$$$_  $$$$| $$      
-| $$\  $$ | $$  | $$| $$$/ \  $$$| $$      
-| $$ \  $$|  $$$$$$/| $$/   \  $$| $$$$$$$$
-|__/  \__/ \______/ |__/     \__/|________/
-
-`
-
 func init() {
-	fmt.Print(initialArt)
+	// print out cover art
+	fmt.Print(InitialArt)
 }
 
 func main() {

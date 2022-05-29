@@ -21,6 +21,8 @@ const (
 	sYusang    = "주요사항보고서(유상증자결정)"
 	sYuMusang  = "주요사항보고서(유무상증자결정)"
 	sConvert   = "주요사항보고서(전환사채권발행결정)"
+	sNewStock  = "주요사항보고서(신주인수권부사채권발행결정)"
+	sExcStock  = "주요사항보고서(교환사채권발행결정)"
 	sRedundant = "기재정정"
 )
 
