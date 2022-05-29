@@ -27,6 +27,13 @@ type ConvertibleIssue struct {
 	Ratio      string
 }
 
+type ExchangeIssue struct {
+	Company    string
+	ReportDate time.Time
+	Rate       string
+	Ratio      string
+}
+
 type NewReportWatch struct {
 	Ctx     Content
 	RawUrl  string // url to raw report

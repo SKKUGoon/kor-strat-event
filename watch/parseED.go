@@ -13,6 +13,7 @@ func (dartReport *NewReportWatch) parseEventDriven() (interface{}, error) {
 		infoBonus = BonusIssue{}
 		infoRight = RightsIssue{}
 		infoCB    = ConvertibleIssue{}
+		infoExB   = ExchangeIssue{}
 	)
 
 	var (
@@ -44,6 +45,10 @@ func (dartReport *NewReportWatch) parseEventDriven() (interface{}, error) {
 				infoCB.ReportDate = time.Now()
 				PrettyPrintC(infoCB, *dartReport)
 				return infoCB, nil
+			case dartReport.T == 5:
+				infoExB.ReportDate = time.Now()
+				PrettyPrintE(infoExB, *dartReport)
+				return infoExB, nil
 			default:
 				return nil, errors.New("dart report type not supported")
 			}
@@ -79,6 +84,8 @@ func (dartReport *NewReportWatch) parseEventDriven() (interface{}, error) {
 						infoRight = rightIssueFillin(tn.Data, c, &infoRight)
 					case dartReport.T == 4:
 						infoCB = cbondIssueFillin(tn.Data, c, &infoCB)
+					case dartReport.T == 5:
+						infoExB = exBondIssueFillin(tn.Data, c, &infoExB)
 					}
 
 				}
@@ -91,6 +98,8 @@ func (dartReport *NewReportWatch) parseEventDriven() (interface{}, error) {
 					ok, wt, c = rightIssueSort(tn)
 				case dartReport.T == 4:
 					ok, wt, c = cbondIssueSort(tn)
+				case dartReport.T == 5:
+					ok, wt, c = exBondIssueSort(tn)
 				}
 
 			default:
@@ -113,84 +122,5 @@ func bonusIssueFillin(d string, caseNum int, c *BonusIssue) BonusIssue {
 		return *c
 	default:
 		return *c
-	}
-}
-
-func bonusIssueSort(t html.Token) (bool, int, int) {
-	data := strings.ReplaceAll(t.Data, "\u00a0", "") // "\u00a0" is %nbsp
-	data = strings.ReplaceAll(data, " ", "")
-
-	switch {
-	case strings.Contains(data, bonusIssueStockAdd):
-		return true, bonusIssueStockAddP, 1
-	case strings.Contains(data, bonusIssueStockPrc):
-		return true, bonusIssueStockPrcP, 2
-	case strings.Contains(data, bonusIssueLock):
-		return true, bonusIssueLockP, 3
-	default:
-		return false, -1, 0
-	}
-}
-
-func rightIssueFillin(d string, caseNum int, c *RightsIssue) RightsIssue {
-	switch {
-	case caseNum == 1:
-		c.BefTotalVolume = d
-		return *c
-	case caseNum == 2:
-		c.NewStockPrc = d
-		return *c
-	case caseNum == 3:
-		c.AftTotalVolume = d
-		return *c
-	default:
-		return *c
-	}
-}
-
-func rightIssueSort(t html.Token) (bool, int, int) {
-	data := strings.ReplaceAll(t.Data, "\u00a0", "")
-	data = strings.ReplaceAll(data, " ", "")
-
-	switch {
-	case strings.Contains(data, rightIssueBefVol0):
-		return true, rightIssueBefVolP, 1
-	case strings.Contains(data, rightIssueStockPrc):
-		return true, rightIssueAftVolP, 2
-	case strings.Contains(data, rightIssueAftVol):
-		return true, rightIssueLockP, 3
-	default:
-		return false, -1, 0
-	}
-}
-
-func cbondIssueFillin(d string, caseNum int, c *ConvertibleIssue) ConvertibleIssue {
-	switch {
-	case caseNum == 1:
-		c.ConvertPrc = d
-		return *c
-	case caseNum == 2:
-		c.Ratio = d
-		return *c
-	default:
-		return *c
-	}
-}
-
-func cbondIssueSort(t html.Token) (bool, int, int) {
-	data := strings.ReplaceAll(t.Data, "\u00a0", "")
-	data = strings.ReplaceAll(data, " ", "")
-
-	switch {
-	case strings.Contains(data, cBondConvertPrc):
-		return true, cBondConvertPrcP, 1
-	case strings.Contains(data, cBondConvertRatio):
-		if !strings.Contains(data, "(D=(A+B)/C)") {
-			return true, cBondConvertRatioP, 2
-		} else {
-			return false, -1, 0
-		}
-	default:
-		return false, -1, 0
 	}
 }

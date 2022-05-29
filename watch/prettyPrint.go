@@ -45,3 +45,17 @@ func PrettyPrintC(c ConvertibleIssue, nw NewReportWatch) {
 	fmt.Println("======================================")
 	fmt.Println()
 }
+
+func PrettyPrintE(e ExchangeIssue, nw NewReportWatch) {
+	fmt.Println("======================================")
+	fmt.Println("<   Event Driven %%% 교환사채 공시   >")
+	fmt.Printf("* 시간: %s\n", e.ReportDate.Format("2006-01-02 15:04:05"))
+	fmt.Printf("* 제목: %s\n", nw.Ctx.Title)
+	fmt.Printf("* 보고서원문: %s\n", nw.RawUrl)
+	fmt.Println("-----")
+	fmt.Println("* 교환사채 관련 상세 정보")
+	fmt.Printf(">>> %s: %s\n", cExcBondRate, e.Rate)
+	fmt.Printf(">>> %s: %s\n", cExcBondRatio, e.Ratio)
+	fmt.Println("======================================")
+	fmt.Println()
+}

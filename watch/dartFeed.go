@@ -85,6 +85,7 @@ func necessaryFeed(c *Content) (bool, int) {
 	isYusang := strings.Contains(c.Title, sYusang)
 	isYuMusang := strings.Contains(c.Title, sYuMusang)
 	isConvert := strings.Contains(c.Title, sConvert)
+	isExchange := strings.Contains(c.Title, sExcStock)
 
 	switch {
 	case isMusang:
@@ -95,6 +96,8 @@ func necessaryFeed(c *Content) (bool, int) {
 		return true, 3
 	case isConvert:
 		return true, 4
+	case isExchange:
+		return true, 5
 	default:
 		return false, -1
 	}
