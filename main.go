@@ -8,6 +8,21 @@ import (
 	"time"
 )
 
+const InitialArt = `
+creator : Sang Il. Bae
+github  : https://github.com/SKKUGoon/goKorMktEvent
+
+ /$$   /$$  /$$$$$$  /$$      /$$ /$$      
+| $$  /$$/ /$$__  $$| $$  /$ | $$| $$      
+| $$ /$$/ | $$  \ $$| $$ /$$$| $$| $$      
+| $$$$$/  | $$  | $$| $$/$$ $$ $$| $$      
+| $$  $$  | $$  | $$| $$$$_  $$$$| $$      
+| $$\  $$ | $$  | $$| $$$/ \  $$$| $$      
+| $$ \  $$|  $$$$$$/| $$/   \  $$| $$$$$$$$
+|__/  \__/ \______/ |__/     \__/|________/
+
+`
+
 func init() {
 	// print out cover art
 	fmt.Print(InitialArt)
@@ -23,7 +38,12 @@ func main() {
 
 	// test
 	if test {
-		reports := []watch.NewReportWatch{watch.TestStruct0, watch.TestStruct1, watch.TestStruct2}
+		reports := []watch.NewReportWatch{
+			watch.TestStruct0,
+			watch.TestStruct1,
+			watch.TestStruct2,
+			watch.TestStruct3,
+		}
 		for _, r := range reports {
 			_ = r.Run()
 		}
