@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"goKorMktEvent/watch"
+	"kor-strat-event/watch"
 	"log"
 	"os"
 	"time"
