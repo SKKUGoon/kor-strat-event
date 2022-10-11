@@ -2,6 +2,11 @@
 
 # Kowl - Korean Stock Market Event Driven Strategy Watchmen
 
+## New projects Notice
+
+This project will be implemented into new korean stock exchange API project. Which will be coded after the kimchi premium project - python based. (golang version kimchi project is deprecated)
+
+
 Kowl provides near-real-time event driven strategy for korean stocks in
 KOSPI and KOSDAQ by scraping DART(Data Analysis, Retrieval and Transfer System)
 provided by Korean FINANCIAL SUPERVISORY SERVICE. By parsing native RSS feed,
